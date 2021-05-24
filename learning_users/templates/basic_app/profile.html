@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% extends "basic_app/base.html" %}
+{% load static %}
+{% block body_block %}
+
+<!-- Add link to profile in nav bar -->
+
+<div class="container">
+
+<h1> Your profile </h1>
+
+  <p> Welcome {{user.username}} </p>
+  <p> Email address: {{user.email}} </p>
+  <p> Portfolio site: {{user.UserProfileInfo.portfolio_site}} </p>
+  <img src="{{user.UserProfileInfo.profile_pic.url}}">
+  <p> {{UserProfileInfo.profile_pic}} </p>
+  <p> {{UserProfileInfo.portfolio_site}} </p>
+  <p> {{user.password}} <p>
+
+    <p>{{user_info}}<p>
+
+
+
+  <!-- The above link to profile pic does not work -->
+
+
+</div>
+
+{% endblock %}
