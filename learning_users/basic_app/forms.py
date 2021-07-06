@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
-from basic_app.models import UserProfileInfo
+from basic_app.models import UserProfileInfo, Object
 
 class UserCreateForm(UserCreationForm):
     password1 = forms.CharField(widget=forms.PasswordInput())
@@ -20,6 +20,11 @@ class UserProfileInfoForm(forms.ModelForm):
     class Meta():
         model = UserProfileInfo
         fields = ('portfolio_site','profile_pic')
+
+class ObjectForm(forms.ModelForm):
+    class Meta:
+        model = Object
+        fields = ('category','colour','description','price')
 
 # Old code
 

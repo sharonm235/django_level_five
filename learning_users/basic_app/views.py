@@ -1,23 +1,51 @@
 from django.shortcuts import render
-from django.views.generic import (CreateView)
-from basic_app.forms import UserCreateForm, UserProfileInfoForm
+from django.views.generic import (View, TemplateView, ListView,
+                                        DetailView,CreateView,
+                                        UpdateView,DeleteView)
+from basic_app.forms import UserCreateForm, UserProfileInfoForm, ObjectForm
 
 
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from basic_app.forms import UserCreateForm, UserProfileInfoForm
 from django.urls import reverse_lazy
 # NEW
-from .models import UserProfileInfo
+from .models import UserProfileInfo, Object
 
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
 def index(request):
     return render(request,'basic_app/index.html')
+
+class ObjectListView(ListView):
+    model = Object
+
+
+class ObjectDetailView(DetailView):
+    model = Object
+
+class CreateObjectView(LoginRequiredMixin,CreateView):
+    login_url = '/basic_app/login'
+    # redirect_field_name = 'xxxxx_detail.html'
+    form_class = ObjectForm
+    model = Object
+    success_url = reverse_lazy('basic_app:object_list')
+
+class ObjectUpdateView(LoginRequiredMixin,UpdateView):
+    login_url = '/basic_app/login'
+    # redirect_field_name = 'xxxxx_detail.html'
+    form_class = ObjectForm
+    model = Object
+
+class ObjectDeleteView(LoginRequiredMixin,DeleteView):
+    login_url = '/basic_app/login'
+    model = Object
+    success_url = reverse_lazy('basic_app:object_list')
 
 # NEW
 # def profile(request):
