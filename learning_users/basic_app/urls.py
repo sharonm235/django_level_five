@@ -13,6 +13,7 @@ app_name = 'basic_app'
 urlpatterns = [
     path('',views.index,name='index'),
     # path('register/',views.RegisterView.as_view(),name='register'),
+    path('order/',views.OrderView.as_view(),name='order'),
     path('register/',views.register,name='register'),
     path('login/', auth_views.LoginView.as_view(template_name="basic_app/login.html"),name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name="logout"),

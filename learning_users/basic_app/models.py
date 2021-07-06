@@ -40,6 +40,7 @@ class Object(models.Model):
     description = models.TextField()
     colour = models.CharField(max_length=200)
     price = models.DecimalField(max_digits=5, decimal_places=2, default=None)
+    image = models.ImageField(upload_to="objects", default=None)
 
     def __str__(self):
         return self.colour + " " + self.category

@@ -22,6 +22,9 @@ User = get_user_model()
 def index(request):
     return render(request,'basic_app/index.html')
 
+class OrderView(TemplateView):
+    template_name = 'basic_app/order.html'
+
 class ObjectListView(ListView):
     model = Object
 

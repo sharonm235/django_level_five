@@ -9,6 +9,7 @@
   <p> Colour: {{object.colour}} </p>
   <p> Description: {{object.description}} </p>
   <p> Price : {{object.price}} </p>
+  <img src="{{object.image.url}}" class="img-thumbnail">
 
   <p> [Below should only work if it is the users item, add a next button and allow to scroll through multiple objects] </p>
 
@@ -18,7 +19,8 @@
 
 <div class="container">
   <p><a class='btn btn-default' href="{% url 'basic_app:object_edit' pk=object.pk %}">Update</a></p>
-  <p><a class='btn btn-default' href="{% url 'basic_app:object_remove' pk=object.pk %}">Delete</a></p>
+  <p><a class='btn btn-default' href="{% url 'basic_app:order' %}">Order</a></p>
+  <!-- <p><a class='btn btn-default' href="{% url 'basic_app:object_remove' pk=object.pk %}">Delete</a></p> -->
   <p><a class='btn btn-default' href="{% url 'basic_app:object_list' %}">Back to object selection</a></p>
 
   <!-- Add a delete button that should only work if it is the user in question's item -->
