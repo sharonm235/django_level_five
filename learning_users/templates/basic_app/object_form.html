@@ -1,0 +1,25 @@
+{% extends "basic_app/base.html" %}
+{% load static %}
+
+{% block body_block %}
+
+<div class="jumbotron">
+
+<h1>Add your item below</h1>
+
+<form enctype="multipart/form-data" method="POST">
+<!-- Do we need class = item above? -->
+  {% csrf_token %}
+  {{form.as_p}}
+  <!-- Takes item model and inputs as a form -->
+
+<button type="submit" class="save btn btn-default">Submit</button>
+  <!-- Check class above -->
+
+  <!-- Add script for medium editor? see blog project form -->
+
+</form>
+
+</div>
+
+{% endblock %}

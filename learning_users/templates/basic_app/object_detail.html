@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% extends "basic_app/base.html" %}
+
+{% block body_block %}
+<div class="jumbotron">
+
+  <h2> Object details: </h2>
+  <p> Category: {{object.category}} </p>
+  <p> Colour: {{object.colour}} </p>
+  <p> Description: {{object.description}} </p>
+
+  <p> [Below should only work if it is the users item, add a next button and allow to scroll through multiple objects] </p>
+
+
+{% if user.is_authenticated %}
+<!-- and item.user == user and not hide_delete -->
+
+<div class="container">
+  <p><a class='btn btn-default' href="{% url 'basic_app:object_edit' pk=object.pk %}">Update</a></p>
+  <p><a class='btn btn-default' href="{% url 'basic_app:object_remove' pk=object.pk %}">Delete</a></p>
+  <p><a class='btn btn-default' href="{% url 'basic_app:object_list' %}">Back to object selection</a></p>
+
+  <!-- Add a delete button that should only work if it is the user in question's item -->
+
+{% else %}
+
+    <a class='btn btn-default' href="{% url 'register' %}">Register</a>
+    <a class='btn btn-default' href="{% url 'basic_app:login' %}">Login</a>
+
+{% endif %}
+
+  <!-- Above needs to be item.pk rather than self.pk -->
+
+</div>
+
+</div>
+
+{% endblock %}

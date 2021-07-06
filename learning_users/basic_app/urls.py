@@ -19,10 +19,14 @@ urlpatterns = [
     # path('profile/',views.profile, name='profile'),
     # path('user/<int:pk>/<str:user>/', views.profile, name='profile'),
     path('<username>/<int:pk>/', views.profile, name='profile'),
+    path('objects/',views.ObjectListView.as_view(),name='object_list'),
+    path('object/<int:pk>', views.ObjectDetailView.as_view(), name='object_detail'),
+    path('object/new/', views.CreateObjectView.as_view(), name='object_new'),
+    path('object/<int:pk>/edit/', views.ObjectUpdateView.as_view(), name='object_edit'),
+    path('object/<int:pk>/remove/', views.ObjectDeleteView.as_view(), name='object_remove'),
 
     # Add further urls and views
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
 
 # # Old code
 #

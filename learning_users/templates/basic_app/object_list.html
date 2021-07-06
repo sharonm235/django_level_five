@@ -1,0 +1,28 @@
+{% extends "basic_app/base.html" %}
+
+{% block body_block %}
+
+<div class="container">
+  <div class="jumbotron">
+
+    <h1> Objects </h1>
+
+</div>
+
+<div class="container">
+  <div class="row">
+
+    <ol>
+
+
+    {% for object in object1_list %}
+    <p><li><a href="{% url 'basic_app:object_detail' pk=object.pk %}">{{object.colour}} {{object.category}}</a></li></p>
+
+    <!-- <a href="{{object.id}}"></a> -->
+    {% endfor %}
+
+    </ol>
+
+</div>
+
+{% endblock %}
