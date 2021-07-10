@@ -15,20 +15,12 @@ class UserProfileInfo(models.Model):
 
     user = models.OneToOneField(User,related_name='user_info',on_delete = models.CASCADE)
 
-    # user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete = models.CASCADE)
-
-    # additional
-
     portfolio_site = models.URLField(blank=True)
 
     profile_pic = models.ImageField(upload_to='profile_pics', blank=True)
 
     def __str__(self):
         return self.user.username
-
-    # def save(self, *args, **kwargs):
-    #     super().save(*args, **kwargs)
-
 
     def get_absolute_url(self):
         return reverse("profile",kwargs={"username": self.user.username,"pk": self.pk})
@@ -42,29 +34,9 @@ class Object(models.Model):
     price = models.DecimalField(max_digits=5, decimal_places=2, default=None)
     image = models.ImageField(upload_to="objects", default=None)
     size = models.CharField(max_length=3,default=None)
-    
+
     def __str__(self):
         return self.colour + " " + self.category
 
     def get_absolute_url(self):
         return reverse("basic_app:object_detail",kwargs={"pk":self.pk})
-
-
-# Old code #
-
-# from django.db import models
-# from django.contrib.auth.models import User
-# # Create your models here.
-#
-# class UserProfileInfo(models.Model):
-#
-#     user = models.OneToOneField(User,on_delete = models.CASCADE)
-#
-#     # additional
-#
-#     portfolio_site = models.URLField(blank=True)
-#
-#     profile_pic = models.ImageField(upload_to='profile_pics', blank=True)
-#
-#     def __str__(self):
-#         return self.user.username

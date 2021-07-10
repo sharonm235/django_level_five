@@ -24,6 +24,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('basic_app/', include ('basic_app.urls')),
     path('logout/',views.user_logout, name='logout'),
-    # path('basic_app/user/<pk>/<str:user>/', views.profile, name="profile"),
     path('basic_app/<username>/<int:pk>/', views.profile, name='profile'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
