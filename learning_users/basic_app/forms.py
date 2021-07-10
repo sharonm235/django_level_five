@@ -24,7 +24,7 @@ class UserProfileInfoForm(forms.ModelForm):
 class ObjectForm(forms.ModelForm):
     class Meta:
         model = Object
-        fields = ('category','colour','description','price', 'image')
+        fields = ('category','colour','description','price', 'image', 'size')
 
 # Old code
 
