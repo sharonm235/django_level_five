@@ -27,11 +27,11 @@ class UserProfileInfo(models.Model):
 
 class Object(models.Model):
     # user = models.OneToOneField(User,related_name='objects',on_delete = models.CASCADE, default=0)
-    # user = models.ForeignKey(User, related_name="objects",on_delete=models.CASCADE)
+    user = models.ForeignKey(UserProfileInfo, related_name="objects",on_delete=models.CASCADE, blank=True,null=True)
     category = models.CharField(max_length=200)
     description = models.TextField()
     colour = models.CharField(max_length=200)
-    price = models.DecimalField(max_digits=5, decimal_places=2, default=None)
+    price = models.DecimalField(max_digits=5, decimal_places=2, blank=False)
     image = models.ImageField(upload_to="objects", default=None)
     size = models.CharField(max_length=3,default=None)
 
