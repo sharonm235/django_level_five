@@ -28,6 +28,7 @@ class UserProfileInfo(models.Model):
 class Object(models.Model):
     # user = models.OneToOneField(User,related_name='objects',on_delete = models.CASCADE, default=0)
     user = models.ForeignKey(UserProfileInfo, related_name="objects",on_delete=models.CASCADE, blank=True,null=True)
+    user_id = models.IntegerField()
     category = models.CharField(max_length=200)
     description = models.TextField()
     colour = models.CharField(max_length=200)

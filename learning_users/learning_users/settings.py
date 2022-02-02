@@ -144,7 +144,7 @@ MEDIA_URL = '/media/'
 
 LOGIN_URL = '/basic_app/user_login'
 LOGIN_REDIRECT_URL = 'index'
-# 
+#
 # # User model
 #
 # AUTH_USER_MODEL = 'basic_app.UserProfileInfo'
